@@ -10,8 +10,9 @@ SSPanel UIM 的需要以下程序才能正常的安装和运行：
 
 SSPanel UIM 支持安装在 LNMP、宝塔面板、Plesk 面板、oneinstack 等集成环境中。安装教程请参阅 [文档](https://wiki.sspanel.host)。
 
-## 演示
-
+## 演示安装
+### 购买服务器
+略过
 [演示站](https://sspanel.host) 每天更新 `dev` 分支最新源码。
 
 ```
