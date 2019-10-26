@@ -18,6 +18,10 @@ root用户登陆
 ### 安装宝塔面板
 宝塔面板
 
+```
+yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && sh install.sh
+```
+
 [演示站](https://sspanel.host) 每天更新 `dev` 分支最新源码。
 
 ```
