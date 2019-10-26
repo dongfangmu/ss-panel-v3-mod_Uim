@@ -34,10 +34,31 @@ phpmyadmin4.7
 域名写解析的或者ip都行
 ftp创建
 mysql 选择长的那个，
-
+### 配置PHP展开
+在软件商店里找到 PHP， 点击设置。
+在禁用函数一栏删除 system proc_open proc_get_status putenv。其实这里找不全，后面还要删。
 ### 安装网站程序
 下载压缩包上传解压到根目录
 权限755
+找到config目录下的.config.php.example文件，将它重命名为.config.php并点开“编辑”。修改一下数据库的信息，其他的根据自己需要修改，修改完成后保存。
+只有三项必须改的是数据库名；数据库用户名；与对应的密码。
+然后找到 网站 - 设置 - 网站目录，将网站运行目录改为public，取消勾选“防跨站攻击”
+
+### 伪静态
+在 伪静态 中填入下面内容：
+```
+location / {
+    try_files $uri /index.php$is_args$args;
+}
+```
+### 不知道叫啥的一步
+然后找到软件商店 - PHP7.1 - 设置。切换到 配置文件，搜索 display_errors = 并把On改为Off后保存。大概在470多行。
+在 性能调整 中，将 运行模式 改为 静态 30并发。并保存。
+### 数据库的导入
+找到数据库，点导入，点从本地上传，上传我们解压的sspanel前端的文件夹内的sql文件夹中的glzjin_all.sql
+覆盖就行
+### 依赖的安装
+安装composer依赖了，SSH登陆服务器，先切换到网站目录下（我的是：cd /www/wwwroot/sspanel）输入如下命令：
 
 
 [演示站](https://sspanel.host) 每天更新 `dev` 分支最新源码。
