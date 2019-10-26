@@ -58,8 +58,13 @@ location / {
 找到数据库，点导入，点从本地上传，上传我们解压的sspanel前端的文件夹内的sql文件夹中的glzjin_all.sql
 覆盖就行
 ### 依赖的安装
-安装composer依赖了，SSH登陆服务器，先切换到网站目录下（我的是：cd /www/wwwroot/sspanel）输入如下命令：
+安装composer依赖了，SSH登陆服务器，先切换到网站目录下（cd /www/wwwroot/你的文件夹名字）输入如下命令：
 
+```
+php composer.phar install
+```
+### 这个时候可能会有依赖安装不了，反正我的一定有。
+这个时候应该这样子
 
 [演示站](https://sspanel.host) 每天更新 `dev` 分支最新源码。
 
