@@ -65,14 +65,44 @@ php composer.phar install
 ```
 ### 这个时候可能会有依赖安装不了，反正我的一定有。
 这个时候应该这样子
-
-[演示站](https://sspanel.host) 每天更新 `dev` 分支最新源码。
-
+php设置，把禁用函数里的putenv删除
+ssh连接服务器
+依次执行以下命令
 ```
-账号：admin
-密码：admin
-mukey=NimaQu
+free -m
+mkdir -p /var/_swap_
+cd /var/_swap_
+#Here, 1M * 2000 ~= 2GB of swap memory
+dd if=/dev/zero of=swapfile bs=1M count=2000
+mkswap swapfile
+swapon swapfile
+echo “/var/_swap_/swapfile none swap sw 0 0” >> /etc/fstab
+#cat /proc/meminfo
+free -m
 ```
+ 
+然后cd到网站目录
+执行
+```
+php composer.phar install
+```
+出现一堆绿的黄的，等待执行好
+这个时候网站已经可以打开了。
+然后创建管理员
+### 创建管理用户
+网站目录执行
+```
+php xcat createAdmin
+php xcat syncusers
+php xcat initQQWry
+php xcat resetTraffic
+php xcat initdownload
+```
+OK了
+这个时候打开时是俩套模版
+改为旧的
+这里我们需要修改一个文件，那就是网站config目录下的routes.php，将 $app->get('/', 'App\Controllers\HomeController:index'); 改为 $app->get('/', 'App\Controllers\HomeController:indexold');即可
+基本就是这样。
 
 ## 文档
 
