@@ -1,4 +1,4 @@
-# 东方木经过亲自测试以后的详细教程
+# 东方木经过亲自测试以后的笔记
 ## 安装
 
 SSPanel UIM 的需要以下程序才能正常的安装和运行：
@@ -12,15 +12,33 @@ SSPanel UIM 支持安装在 LNMP、宝塔面板、Plesk 面板、oneinstack 等�
 
 ## 演示安装
 ### 购买服务器
-略过
+略过系统centos7
 ### ssh连接
 root用户登陆
 ### 安装宝塔面板
-宝塔面板
+宝塔面板安装
 
 ```
 yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && sh install.sh
 ```
+### 登陆面板选择安装需要的东西
+登陆选择如下
+选择左边
+mysql5.5
+php7.2
+phpmyadmin4.7
+其他默认
+安装了
+### 网站
+网站新建一个
+域名写解析的或者ip都行
+ftp创建
+mysql 选择长的那个，
+
+### 安装网站程序
+下载压缩包上传解压到根目录
+权限755
+
 
 [演示站](https://sspanel.host) 每天更新 `dev` 分支最新源码。
 
