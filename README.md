@@ -33,7 +33,7 @@ phpmyadmin4.7
 网站新建一个
 域名写解析的或者ip都行
 ftp创建
-mysql 选择长的那个，
+mysql 选择长的那个，四个都一样。
 ### 配置PHP展开
 在软件商店里找到 PHP， 点击设置。
 在禁用函数一栏删除 system proc_open proc_get_status putenv。其实这里找不全，后面还要删。
@@ -41,9 +41,31 @@ mysql 选择长的那个，
 下载压缩包上传解压到根目录
 权限755
 找到config目录下的.config.php.example文件，将它重命名为.config.php并点开“编辑”。修改一下数据库的信息，其他的根据自己需要修改，修改完成后保存。
-只有三项必须改的是数据库名；数据库用户名；与对应的密码。
+只有四项必须改的是前后端对接密码（mukey），数据库名；数据库用户名；与对应的密码。
+以上也可以用以下代码执行。ps我不太喜欢用代码，因为一开始看不懂，后来发现都一样
+```
+cd /www/wwwroot/你的文件夹名
+git clone -b master https://github.com/Anankke/SSPanel-Uim.git tmp && mv tmp/.git . && rm -rf tmp && git reset --hard
+git config core.filemode false
+cd ../
+chmod -R 755 你的文件夹名/
+chown -R www:www 你的文件夹名/
+```
 然后找到 网站 - 设置 - 网站目录，将网站运行目录改为public，取消勾选“防跨站攻击”
-
+### 依赖的安装
+在网站目录下（cd /www/wwwroot/你的文件夹名字）输入如下命令：
+```
+wget https://getcomposer.org/installer -O composer.phar
+php composer.phar
+php composer.phar install
+```
+### 复制数据库到备份
+```
+ln -s /www/wwwroot/你的文件夹名/sql/glzjin_all.sql /www/backup/database/
+```
+### 数据库的导入
+找到数据库，点导入，点从本地上传，上传我们解压的sspanel前端的文件夹内的sql文件夹中的glzjin_all.sql
+覆盖就行
 ### 伪静态
 在 伪静态 中填入下面内容：
 ```
@@ -54,15 +76,7 @@ location / {
 ### 不知道叫啥的一步
 然后找到软件商店 - PHP7.1 - 设置。切换到 配置文件，搜索 display_errors = 并把On改为Off后保存。大概在470多行。
 在 性能调整 中，将 运行模式 改为 静态 30并发。并保存。
-### 数据库的导入
-找到数据库，点导入，点从本地上传，上传我们解压的sspanel前端的文件夹内的sql文件夹中的glzjin_all.sql
-覆盖就行
-### 依赖的安装
-安装composer依赖了，SSH登陆服务器，先切换到网站目录下（cd /www/wwwroot/你的文件夹名字）输入如下命令：
 
-```
-php composer.phar install
-```
 ### 这个时候可能会有依赖安装不了，反正我的一定有。
 这个时候应该这样子
 php设置，把禁用函数里的putenv删除
